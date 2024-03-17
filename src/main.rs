@@ -6,6 +6,9 @@ struct Elemento{
     nome:String, simbolo:String, serie_quimica:String, estado_materia:String, classe_magnetica:String,
     densidade:f32, dureza:f32, massa_atomica:f32, ponto_fusao:f32, ponto_ebulicao:f32, eletronegatividade:f32
 }
+
+const TM:u32 = 10;
+
 fn cadastra_elemento() -> Elemento {
     let mut nome:String = Default::default();
     let mut simbolo:String = Default::default();
@@ -30,9 +33,36 @@ fn cadastra_elemento() -> Elemento {
     return elemento
 }
 
-fn inicializa_elementos(vet_elementos:&mut [Elemento;10]){
-    vet_elementos[0].nome = "Hidrogênio".parse().unwrap();
-    vet_elementos[1].nome = "Hélio".parse().unwrap();
+fn inicializa_elementos(vet_elementos:&mut [Elemento; TM as usize]){
+    vet_elementos[0].nome = "Hidrogênio".to_string();
+    vet_elementos[0].simbolo = "H".to_string();
+
+    vet_elementos[1].nome = "Hélio".to_string();
+    vet_elementos[1].simbolo = "He".to_string();
+
+    vet_elementos[2].nome = "Lítio".to_string();
+    vet_elementos[2].simbolo = "Li".to_string();
+
+    vet_elementos[3].nome = "Berílio".to_string();
+    vet_elementos[3].simbolo = "Be".to_string();
+
+    vet_elementos[4].nome = "Boro".to_string();
+    vet_elementos[4].simbolo = "B".to_string();
+
+    vet_elementos[5].nome = "Carbono".to_string();
+    vet_elementos[5].simbolo = "C".to_string();
+
+    vet_elementos[6].nome = "Nitrogênio".to_string();
+    vet_elementos[6].simbolo = "N".to_string();
+
+    vet_elementos[7].nome = "Oxigênio".to_string();
+    vet_elementos[7].simbolo = "O".to_string();
+
+    vet_elementos[8].nome = "Flúor".to_string();
+    vet_elementos[8].simbolo = "F".to_string();
+
+    vet_elementos[9].nome = "Neônio".to_string();
+    vet_elementos[9].simbolo = "Ne".to_string();
 }
 
 fn exibe_elemento(elementos:&Elemento){
@@ -54,7 +84,7 @@ fn stoi(y:String) -> i32{
     return y
 }
 
-fn lista_elementos(elementos:[Elemento; 10]) -> Elemento{
+fn lista_elementos(elementos:[Elemento; TM as usize]) -> Elemento{
     for i in elementos{
         println!("Nome: {}", i.nome);
         println!("Símbolo: {}", i.simbolo);
@@ -65,7 +95,7 @@ fn lista_elementos(elementos:[Elemento; 10]) -> Elemento{
     return el_retorno
 }
 
-fn pesquisar_elementos(elementos:[Elemento; 10]) -> Elemento{
+fn pesquisar_elementos(elementos:[Elemento; TM as usize]) -> Elemento{
     println!(" | Deseja pesquisar por qual campo?\n\
      1 | Nome\n");
     let mut opc:String = Default::default();
@@ -96,8 +126,7 @@ fn pesquisar_elementos(elementos:[Elemento; 10]) -> Elemento{
 }
 
 fn menu(){
-    const TAM_MAX:u32 = 10;
-    let mut vet_elementos:[Elemento; TAM_MAX as usize] = Default::default();
+    let mut vet_elementos:[Elemento; TM as usize] = Default::default();
     inicializa_elementos(&mut vet_elementos);
     println!("\tMENU PRINCIPAL\n\
     1 | Listar todos os elementos\n\
