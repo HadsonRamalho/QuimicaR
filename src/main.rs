@@ -97,7 +97,9 @@ fn lista_elementos(elementos:[Elemento; TM as usize]) -> Elemento{
 
 fn pesquisar_elementos(elementos:[Elemento; TM as usize]) -> Elemento{
     println!(" | Deseja pesquisar por qual campo?\n\
-     1 | Nome\n");
+     1 | Nome\n\
+     2 | Símbolo\n");
+
     let mut opc:String = Default::default();
     io::stdin().read_line(& mut opc).expect(" > Erro ao ler a opção");
     let mut opcao = stoi(opc);
@@ -118,6 +120,20 @@ fn pesquisar_elementos(elementos:[Elemento; TM as usize]) -> Elemento{
             }
             if (!encontrado){
                 println!(" > Elemento não encontrado!");
+            }
+        }
+        2 =>{
+            println!("Digite o símbolo do elemento: ");
+            let mut simb_elem:String = Default::default();
+            io::stdin().read_line(&mut simb_elem).expect(" > Erro ao ler o símbolo do elemento");
+            let mut encontrado = false;
+            for i in elementos.iter(){
+                if(i.simbolo.eq_ignore_ascii_case((simb_elem.trim()))){
+                    println!(" | ELEMENTO ENCONTRADO \n");
+                    exibe_elemento(&i);
+                    encontrado = true;
+                    break;
+                }
             }
         }
         _ => {println!(" > Erro na pesquisa.");}
