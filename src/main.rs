@@ -136,7 +136,7 @@ fn pesquisar_elementos(elementos:[Elemento; TM as usize]) -> Elemento{
                 }
             }
         }
-        _ => {println!(" > Erro na pesquisa.");}
+        _ => {println!(" > Elemento não encontrado");}
     }
     return el_retorno
 }
